@@ -1,7 +1,16 @@
-# Idea
-.idea
-*.iml
+HELP.md
+build/
+!**/src/main/**
+!**/src/test/**
 
-# Gradle
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### Gradle ###
 .gradle
-build
+
+### Logs ###
+*.log
