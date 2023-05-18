@@ -6,7 +6,16 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class LombokUserData {
-    @JsonProperty("data")
-    private User user;
+public class ListBooks {
+
+    private Integer page;
+
+    @JsonProperty("per_page")
+    private Integer perPage;
+
+    private Integer total;
+
+    @JsonProperty("total_pages")
+    private Integer totalPages;
+
 }

@@ -6,11 +6,17 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class User {
+public class Book {
+
     private Integer id;
-    private String email;
-    @JsonProperty("first_name")
-    private String firstName;
-    @JsonProperty("last_name")
-    private String lastName;
+
+    private String name;
+
+    private Integer year;
+
+    private String color;
+
+    @JsonProperty("pantone_value")
+    private String pantoneValue;
+
 }
