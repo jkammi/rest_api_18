@@ -56,3 +56,9 @@ tasks.withType(Test) {
         }
     }
 }
+
+task allure_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("allure")
+    }
+}
