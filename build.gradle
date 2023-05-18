@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
     id "io.freefair.lombok" version "8.0.1"
+    id 'io.qameta.allure' version '2.10.0'
 }
 
 repositories {
@@ -9,20 +10,39 @@ repositories {
 
 def restAssuredVersion = "5.3.0",
     slf4jVersion = "2.0.7",
-    jupiterVersion = "5.9.3"
+    jupiterVersion = "5.9.3",
+    allureVersion = "2.22.0",
+    assertJVersion = "3.24.2"
+
+allure {
+    report {
+        version.set(allureVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+            }
+        }
+    }
+}
 
 dependencies {
     testImplementation (
             "io.rest-assured:rest-assured:$restAssuredVersion",
-            "io.rest-assured:json-schema-validator:$restAssuredVersion",
+            "io.qameta.allure:allure-rest-assured:$allureVersion",
+            "org.assertj:assertj-core:$assertJVersion",
+            "com.fasterxml.jackson.core:jackson-databind:2.15.0",
             "org.junit.jupiter:junit-jupiter:5.9.2",
             "org.slf4j:slf4j-simple:$slf4jVersion",
-            "org.aeonbits.owner:owner:1.0.12",
-            "com.fasterxml.jackson.core:jackson-databind:2.15.0",
+
+            "io.rest-assured:json-schema-validator:$restAssuredVersion",
             "org.junit.jupiter:junit-jupiter-api:$jupiterVersion",
             "org.junit.jupiter:junit-jupiter-engine:$jupiterVersion",
             "org.junit.jupiter:junit-jupiter-params:$jupiterVersion",
             'org.hamcrest:hamcrest:2.2'
+
     )
 }
 
